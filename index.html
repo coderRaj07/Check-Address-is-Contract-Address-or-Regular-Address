@@ -74,7 +74,7 @@
         try{
 		var address = document.getElementById("address").value;
                 console.log(address);
-            	const res =  await contract_write.isContract(address);		
+            	const res =  contract_write.isContract(address);		
            	console.log(res);
             	if (res)
                    swal("Sucess", "It's a Contract Address", "success");
