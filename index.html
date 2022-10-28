@@ -71,7 +71,7 @@
 	const contract_write = new ethers.Contract(contract_address, contract_abi, signer);
 
     async function check(){
-        try{
+            try{
 		var address = document.getElementById("address").value;
                 console.log(address);
             	const res =  await contract_write.isContract(address);		
@@ -80,9 +80,11 @@
                    swal("Sucess", "It's a Contract Address", "success");
            	else
                    swal("Error", "It's not a Contract Address", "error")
-        }
-        catch(swal("Invalid Address", "Enter a Valid Address", "error"))
-    }
+               }
+        catch(err)
+	      {
+	       swal("Invalid Address", "Enter a Valid Address", "error")
+              }
     </script>
 </body>
 </html>
