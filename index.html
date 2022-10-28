@@ -43,7 +43,8 @@
 		}
     };
 
-    const contract_address = "0x44c8785795f3aC45cFe846Ed890c52eF5C8965B8";
+    //Goerli Testnet
+    const contract_address = "0x3ce5C66E5423eA0A4a9067fb6139899678044b7A";
     const contract_abi = [
 	{
 		"inputs": [
@@ -69,18 +70,18 @@
     const contract_read = new ethers.Contract(contract_address, contract_abi, provider);
 	const contract_write = new ethers.Contract(contract_address, contract_abi, signer);
 
-    function check(){
-        var address = document.getElementById("address").value;
-        console.log(address);
-        contract_write.isContract(address)
-        .then(function(res){
-            console.log(res);
-            if (res)
-                swal("Sucess", "It's a Contract Address", "success");
-            else
-                swal("Error", "It's not a Contract Address", "error")
-        })
-        .catch(swal("Invalid Address", "Enter a Valid Address", "error"))
+    async function check(){
+        try{
+		var address = document.getElementById("address").value;
+                console.log(address);
+            	const res =  await contract_write.isContract(address);		
+           	console.log(res);
+            	if (res)
+                   swal("Sucess", "It's a Contract Address", "success");
+           	else
+                   swal("Error", "It's not a Contract Address", "error")
+        }
+        catch(swal("Invalid Address", "Enter a Valid Address", "error"))
     }
     </script>
 </body>
